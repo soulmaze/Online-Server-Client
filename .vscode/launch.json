@@ -1,0 +1,128 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "ServerClientPractice (Debug)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPractice Win64 Debug Build",
+			"program": "D:\\Projects\\Unreal Engine\\ServerClientPractice\\Binaries\\Win64\\UE4-Win64-Debug.exe",
+			"args": [
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "ServerClientPractice (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPractice Win64 DebugGame Build",
+			"program": "D:\\Projects\\Unreal Engine\\ServerClientPractice\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
+			"args": [
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "ServerClientPractice (Development)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPractice Win64 Development Build",
+			"program": "D:\\Projects\\Unreal Engine\\ServerClientPractice\\Binaries\\Win64\\UE4.exe",
+			"args": [
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "ServerClientPractice (Shipping)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPractice Win64 Shipping Build",
+			"program": "D:\\Projects\\Unreal Engine\\ServerClientPractice\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
+			"args": [
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "ServerClientPractice (Test)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPractice Win64 Test Build",
+			"program": "D:\\Projects\\Unreal Engine\\ServerClientPractice\\Binaries\\Win64\\UE4-Win64-Test.exe",
+			"args": [
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "ServerClientPracticeEditor (Debug)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPracticeEditor Win64 Debug Build",
+			"program": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe",
+			"args": [
+				"D:\\Projects\\Unreal Engine\\ServerClientPractice\\ServerClientPractice.uproject"
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "ServerClientPracticeEditor (DebugGame)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPracticeEditor Win64 DebugGame Build",
+			"program": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Binaries\\Win64\\UE4Editor-Win64-DebugGame.exe",
+			"args": [
+				"D:\\Projects\\Unreal Engine\\ServerClientPractice\\ServerClientPractice.uproject"
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "ServerClientPracticeEditor (Development)",
+			"request": "launch",
+			"preLaunchTask": "ServerClientPracticeEditor Win64 Development Build",
+			"program": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Binaries\\Win64\\UE4Editor.exe",
+			"args": [
+				"D:\\Projects\\Unreal Engine\\ServerClientPractice\\ServerClientPractice.uproject"
+			],
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27",
+			"stopAtEntry": false,
+			"externalConsole": true,
+			"type": "cppvsdbg",
+			"visualizerFile": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Extras\\VisualStudioDebugging\\UE4.natvis"
+		},
+		{
+			"name": "Generate Project Files",
+			"type": "clr",
+			"request": "launch",
+			"program": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Binaries\\DotNET\\UnrealBuildTool.exe",
+			"console": "externalTerminal",
+			"args": [
+				"-projectfiles",
+				"-vscode",
+				"-project=D:\\Projects\\Unreal Engine\\ServerClientPractice\\ServerClientPractice.uproject",
+				"-game",
+				"-engine"
+			],
+			"internalConsoleOptions": "openOnSessionStart",
+			"cwd": "C:\\Program Files\\Epic Games\\UE_4.27"
+		}
+	]
+}

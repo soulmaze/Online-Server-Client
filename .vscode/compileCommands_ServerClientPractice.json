@@ -1,0 +1,107 @@
+[
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\InGameMenu.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\InGameMenu.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MainMenu.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MainMenu.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MenuInterface.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MenuInterface.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MenuWidget.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MenuWidget.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MovingPlatform.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\MovingPlatform.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\PlatformTrigger.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\PlatformTrigger.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientGameInstance.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientGameInstance.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientPractice.Build.cs",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientPractice.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientPractice.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientPracticeCharacter.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientPracticeCharacter.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientPracticeGameMode.cpp",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	},
+	{
+		"file": "D:\\\\Projects\\\\Unreal Engine\\\\ServerClientPractice\\\\Source\\\\ServerClientPractice\\\\ServerClientPracticeGameMode.h",
+		"command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe @\"D:\\Projects\\Unreal Engine\\ServerClientPractice\\.vscode\\compileCommands_ServerClientPractice\\ServerClientPractice.210.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.27\\Engine\\Source"
+	}
+]
