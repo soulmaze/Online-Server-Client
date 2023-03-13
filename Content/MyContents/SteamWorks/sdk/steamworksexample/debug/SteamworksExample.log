@@ -1,3 +1,0 @@
-﻿  Running VPC CRC Check - steamworksexample.vpc
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(247,5): warning MSB8064: Custom build for item "steamworksexample.vpc" succeeded, but specified dependency "d:\projects\unreal engine\serverclientpractice 5.0\content\mycontents\steamworks\sdk\steamworksexample\steamworksexample.vpc" does not exist. This may cause incremental build to work incorrectly.
-  SteamworksExample.vcxproj -> D:\Projects\Unreal Engine\ServerClientPractice 5.0\Content\MyContents\SteamWorks\sdk\steamworksexample\Debug\steamworksexample.exe
