@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
 #include "MenuInterface.h"
-//#include "OnlineSubsystem.h"
 #include "ServerClientGameInstance.generated.h"
 
 /**
@@ -20,7 +19,7 @@ public:
 
 	UServerClientGameInstance(const FObjectInitializer & ObjectInitializer);
 
-	virtual void Init();
+	virtual void Init() override;
 
 	UFUNCTION(Exec)
 	void Host() override;
@@ -43,8 +42,4 @@ private:
 	TSubclassOf<class UUserWidget> InGameMenuClass;
 
 	class UMainMenu* Menu;
-
-	//void OnCreateSessionComplete(FName SessionName, bool Succeed);
-
-	//IOnlineSubsystem* Subsystem;
 };

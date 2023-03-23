@@ -4,8 +4,7 @@
 #include "ServerClientGameInstance.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
-//#include "Interfaces/OnlineSessionInterface.h"
-//#include "OnlineSessionSettings.h"
+#include "OnlineSubsystem.h"
 
 #include "MainMenu.h"
 #include "MenuWidget.h"
@@ -25,7 +24,11 @@ UServerClientGameInstance::UServerClientGameInstance(const FObjectInitializer & 
 
 void UServerClientGameInstance::Init()
 {
-   /*Subsystem = IOnlineSubsystem::Get();
+    Super::Init();
+
+    UE_LOG(LogTemp, Warning, TEXT("init is working"));
+
+    IOnlineSubsystem* Subsystem = IOnlineSubsystem::Get();
     if(Subsystem != nullptr)
     {
         UE_LOG(LogTemp, Warning, TEXT("Found Subsystem %s"), *Subsystem->GetSubsystemName().ToString());
@@ -33,8 +36,7 @@ void UServerClientGameInstance::Init()
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("Found no subsystem"));
-    }*/ 
-    UE_LOG(LogTemp, Warning, TEXT("Found class %s"), *MenuClass->GetName())
+    } 
 }
 
 void UServerClientGameInstance::InGameLoadMenu()
@@ -63,15 +65,6 @@ void UServerClientGameInstance::LoadMenu()
 
 void UServerClientGameInstance::Host()
 {
-    /*IOnlineSessionPtr SessionInterface = Subsystem->GetSessionInterface();
-    if (SessionInterface.IsValid())
-    {
-        FOnlineSessionSettings SessionSetting;
-        SessionInterface->CreateSession(0, TEXT("My Game Session"), SessionSetting);
-        SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UServerClientGameInstance::OnCreateSessionComplete);
-    }*/ 
-    
-
     if (Menu != nullptr)
     {
         UE_LOG(LogTemp, Warning, TEXT("teardown is executing"));
@@ -88,15 +81,6 @@ void UServerClientGameInstance::Host()
     World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
 
 }
-
-//void UServerClientGameInstance::OnCreateSessionComplete(FName SessionName, bool Succeed)
-//{
-//   if (!Succeed)
-//{
- //   UE_LOG(LogTemp, Warning, TEXT("can not create session"))
- //    return;
-//}
-//}
 
 void UServerClientGameInstance::Join(FString& Address)
 {  
