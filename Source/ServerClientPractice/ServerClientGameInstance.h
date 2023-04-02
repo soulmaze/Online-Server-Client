@@ -45,4 +45,9 @@ private:
 	class UMainMenu* Menu;
 
 	IOnlineSubsystem* Subsystem;
+
+	IOnlineSessionPtr SessionInterface;
+
+	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
+
 };

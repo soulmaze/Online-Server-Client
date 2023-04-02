@@ -33,19 +33,66 @@ void UServerClientGameInstance::Init()
     if(Subsystem != nullptr)
     {
         UE_LOG(LogTemp, Warning, TEXT("Found Subsystem %s"), *Subsystem->GetSubsystemName().ToString());
-        IOnlineSessionPtr SessionInterface = Subsystem->GetSessionInterface();
+        SessionInterface = Subsystem->GetSessionInterface();
         if (SessionInterface.IsValid())
         {
-            FOnlineSessionSettings SessionSetting;
-            SessionInterface->CreateSession(0, TEXT("My Session Game"), SessionSetting);
-            if()
-            UE_LOG(LogTemp, Warning, TEXT("Found My Session Game"))
+            SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UServerClientGameInstance::OnCreateSessionComplete);
         }
     }
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("Found no subsystem"));
     } 
+}
+
+void UServerClientGameInstance::Host()
+{
+    if (SessionInterface.IsValid())
+    {
+        FOnlineSessionSettings SessionSetting;
+        SessionInterface->CreateSession(0, TEXT("My Session"), SessionSetting);
+    }
+}
+
+void UServerClientGameInstance::OnCreateSessionComplete(FName SessionName, bool bWasSuccessful)
+{
+    if (!bWasSuccessful)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("the session creation was not complete"));
+
+        return;
+    }
+    if (Menu != nullptr)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("teardown is executing"));
+        Menu->Teardown();
+    }
+
+    UEngine* Engine = GetEngine();
+    if (!ensure(Engine != nullptr)) return;
+
+    Engine->AddOnScreenDebugMessage(0, 2, FColor::Blue, TEXT("Hosting"));
+
+    UWorld* World = GetWorld();
+    if (!ensure(World != nullptr)) return;
+    World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
+}
+
+void UServerClientGameInstance::Join(FString& Address)
+{
+    if (Menu != nullptr)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("teardown is executing"));
+        Menu->Teardown();
+    }
+    UEngine* Engine = GetEngine();
+    if (!ensure(Engine != nullptr)) return;
+
+    Engine->AddOnScreenDebugMessage(0, 5, FColor::Blue, FString::Printf(TEXT("Joining %s"), *Address));
+
+    APlayerController* PlayerController = GetFirstLocalPlayerController();
+    if (!ensure(PlayerController != nullptr)) return;
+    PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
 }
 
 void UServerClientGameInstance::InGameLoadMenu()
@@ -70,43 +117,6 @@ void UServerClientGameInstance::LoadMenu()
     Menu->Setup();
 
     Menu->SetMenuInterface(this);
-}
-
-void UServerClientGameInstance::Host()
-{
-    if (Menu != nullptr)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("teardown is executing"));
-        Menu->Teardown();
-    }
-
-    UEngine* Engine = GetEngine();
-    if (!ensure(Engine != nullptr)) return;
-
-    Engine->AddOnScreenDebugMessage(0, 2, FColor::Blue, TEXT("Hosting"));
-
-    UWorld* World = GetWorld();
-    if (!ensure(World != nullptr)) return;
-    World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
-
-}
-
-void UServerClientGameInstance::Join(FString& Address)
-{  
-    if(Menu != nullptr)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("teardown is executing"));
-        Menu->Teardown();
-    }
-    UEngine* Engine = GetEngine(); 
-    if(!ensure(Engine != nullptr)) return;
-
-    Engine->AddOnScreenDebugMessage(0, 5, FColor::Blue, FString::Printf(TEXT("Joining %s"), *Address));
-
-    APlayerController* PlayerController = GetFirstLocalPlayerController();
-    if(!ensure(PlayerController != nullptr)) return;
-    PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
-    
 }
 
 void UServerClientGameInstance::LoadMainMenu()
