@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
 #include "MenuInterface.h"
+#include "OnlineSubsystem.h"
 #include "ServerClientGameInstance.generated.h"
 
 /**
@@ -42,4 +43,6 @@ private:
 	TSubclassOf<class UUserWidget> InGameMenuClass;
 
 	class UMainMenu* Menu;
+
+	IOnlineSubsystem* Subsystem;
 };

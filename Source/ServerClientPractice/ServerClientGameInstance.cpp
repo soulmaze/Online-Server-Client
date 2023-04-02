@@ -4,7 +4,8 @@
 #include "ServerClientGameInstance.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
-#include "OnlineSubsystem.h"
+#include "OnlineSessionSettings.h"
+#include "Interfaces/OnlineSessionInterface.h"
 
 #include "MainMenu.h"
 #include "MenuWidget.h"
@@ -28,10 +29,18 @@ void UServerClientGameInstance::Init()
 
     UE_LOG(LogTemp, Warning, TEXT("init is working"));
 
-    IOnlineSubsystem* Subsystem = IOnlineSubsystem::Get();
+    Subsystem = IOnlineSubsystem::Get();
     if(Subsystem != nullptr)
     {
         UE_LOG(LogTemp, Warning, TEXT("Found Subsystem %s"), *Subsystem->GetSubsystemName().ToString());
+        IOnlineSessionPtr SessionInterface = Subsystem->GetSessionInterface();
+        if (SessionInterface.IsValid())
+        {
+            FOnlineSessionSettings SessionSetting;
+            SessionInterface->CreateSession(0, TEXT("My Session Game"), SessionSetting);
+            if()
+            UE_LOG(LogTemp, Warning, TEXT("Found My Session Game"))
+        }
     }
     else
     {
