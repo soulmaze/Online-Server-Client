@@ -11,6 +11,8 @@
 #include "MenuWidget.h"
 #include "InGameMenu.h"
 
+const static FName SESSION_NAME = TEXT("My Session Game");
+
 UServerClientGameInstance::UServerClientGameInstance(const FObjectInitializer & ObjectInitializer)
 {
     static ConstructorHelpers::FClassFinder<UUserWidget> MenuBPClass(TEXT("/Game/MyContents/MenuSystem/Blueprints/WBP_MainMenu"));
@@ -37,6 +39,16 @@ void UServerClientGameInstance::Init()
         if (SessionInterface.IsValid())
         {
             SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UServerClientGameInstance::OnCreateSessionComplete);
+            SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this,&UServerClientGameInstance::OnDestroySessionComplete);
+            SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UServerClientGameInstance::OnFindSessionComplete);
+
+            SessionSearch = MakeShareable(new FOnlineSessionSearch());
+            if (SessionSearch.IsValid())
+            {
+                TSharedRef<FOnlineSessionSearch> SearchSettingsRef = SessionSearch.ToSharedRef();
+                SessionInterface->FindSessions(0, SearchSettingsRef);
+                UE_LOG(LogTemp, Warning, TEXT("start finding session"));
+            }
         }
     }
     else
@@ -49,8 +61,18 @@ void UServerClientGameInstance::Host()
 {
     if (SessionInterface.IsValid())
     {
-        FOnlineSessionSettings SessionSetting;
-        SessionInterface->CreateSession(0, TEXT("My Session"), SessionSetting);
+        auto ExistingSession = SessionInterface->GetNamedSession(SESSION_NAME);
+        if (ExistingSession != nullptr)
+        {
+            SessionInterface->DestroySession(SESSION_NAME);
+            UE_LOG(LogTemp, Warning, TEXT("the last session has been destroyed"));
+
+        }
+        else
+        {
+            CreateSession();
+            UE_LOG(LogTemp, Warning, TEXT("session creation if the SESSION_NAME is null"));
+        }
     }
 }
 
@@ -76,6 +98,31 @@ void UServerClientGameInstance::OnCreateSessionComplete(FName SessionName, bool 
     UWorld* World = GetWorld();
     if (!ensure(World != nullptr)) return;
     World->ServerTravel("/Game/ThirdPersonCPP/Maps/ThirdPersonExampleMap?listen");
+}
+
+void UServerClientGameInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuccessful)
+{
+    UE_LOG(LogTemp, Warning, TEXT("On Destroy Session Complete called"));
+    if (bWasSuccessful) 
+    {
+        CreateSession();
+        UE_LOG(LogTemp, Warning, TEXT("session creation after last session distruction"));
+    }
+}
+
+void UServerClientGameInstance::OnFindSessionComplete(bool bWasSuccessful)
+{
+    UE_LOG(LogTemp, Warning, TEXT("finding session is completed"));
+}
+
+void UServerClientGameInstance::CreateSession()
+{
+    if (SessionInterface != nullptr)
+    {
+        FOnlineSessionSettings SessionSetting;
+        SessionInterface->CreateSession(0, SESSION_NAME, SessionSetting);
+        UE_LOG(LogTemp, Warning, TEXT("new session has been created without call backing completion"));
+    }
 }
 
 void UServerClientGameInstance::Join(FString& Address)
@@ -109,7 +156,7 @@ void UServerClientGameInstance::InGameLoadMenu()
 
 void UServerClientGameInstance::LoadMenu()
 {
-    UE_LOG(LogTemp, Warning, TEXT("LoadMenu triggered"))
+    UE_LOG(LogTemp, Warning, TEXT("LoadMenu triggered"));
     if(!ensure(MenuClass != nullptr)) return;
     Menu = CreateWidget<UMainMenu>(this, MenuClass);//we changed uuserwidget to umainmenu after making menu and interface
     if(!ensure(Menu != nullptr)) return;

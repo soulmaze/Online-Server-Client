@@ -50,4 +50,12 @@ private:
 
 	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
 
+	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+
+	void OnFindSessionComplete(bool bWasSuccessful);
+
+	TSharedPtr<class FOnlineSessionSearch> SessionSearch;
+
+	void CreateSession();
+
 };
