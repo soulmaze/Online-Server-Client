@@ -4,8 +4,6 @@
 #include "ServerClientGameInstance.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Blueprint/UserWidget.h"
-#include "OnlineSessionSettings.h"
-#include "Interfaces/OnlineSessionInterface.h"
 
 #include "MainMenu.h"
 #include "MenuWidget.h"
@@ -29,8 +27,6 @@ void UServerClientGameInstance::Init()
 {
     Super::Init();
 
-    UE_LOG(LogTemp, Warning, TEXT("init is working"));
-
     Subsystem = IOnlineSubsystem::Get();
     if(Subsystem != nullptr)
     {
@@ -41,14 +37,7 @@ void UServerClientGameInstance::Init()
             SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UServerClientGameInstance::OnCreateSessionComplete);
             SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this,&UServerClientGameInstance::OnDestroySessionComplete);
             SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UServerClientGameInstance::OnFindSessionComplete);
-
-            SessionSearch = MakeShareable(new FOnlineSessionSearch());
-            if (SessionSearch.IsValid())
-            {
-                TSharedRef<FOnlineSessionSearch> SearchSettingsRef = SessionSearch.ToSharedRef();
-                SessionInterface->FindSessions(0, SearchSettingsRef);
-                UE_LOG(LogTemp, Warning, TEXT("start finding session"));
-            }
+            SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UServerClientGameInstance::OnJoinSessionComplete);
         }
     }
     else
@@ -112,26 +101,72 @@ void UServerClientGameInstance::OnDestroySessionComplete(FName SessionName, bool
 
 void UServerClientGameInstance::OnFindSessionComplete(bool bWasSuccessful)
 {
-    UE_LOG(LogTemp, Warning, TEXT("finding session is completed"));
+    TArray<FOnlineSessionSearchResult> SessionSearchResult = SessionSearch->SearchResults;
+    if (bWasSuccessful && SessionSearch.IsValid() && Menu != nullptr)
+    {
+        TArray<FString> ServerNames;
+
+        for (const FOnlineSessionSearchResult& SearchResult : SessionSearchResult)
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Session %s has been found"), *SearchResult.GetSessionIdStr());
+
+            ServerNames.Add(SearchResult.GetSessionIdStr());
+        }
+
+        Menu->SetServerList(ServerNames);
+    }
 }
+
 
 void UServerClientGameInstance::CreateSession()
 {
     if (SessionInterface != nullptr)
     {
         FOnlineSessionSettings SessionSetting;
+        SessionSetting.bIsLANMatch = true;
+        SessionSetting.bShouldAdvertise = true;
+        SessionSetting.NumPublicConnections = 2;
+        
         SessionInterface->CreateSession(0, SESSION_NAME, SessionSetting);
         UE_LOG(LogTemp, Warning, TEXT("new session has been created without call backing completion"));
     }
 }
 
-void UServerClientGameInstance::Join(FString& Address)
+void UServerClientGameInstance::RefreshServerList()
 {
+    SessionSearch = MakeShareable(new FOnlineSessionSearch());
+    if (SessionSearch.IsValid())
+    {
+        TSharedRef<FOnlineSessionSearch> SearchSettingsRef = SessionSearch.ToSharedRef();
+        SessionInterface->FindSessions(0, SearchSettingsRef);
+        UE_LOG(LogTemp, Warning, TEXT("start finding session"));
+    }
+
+}
+
+void UServerClientGameInstance::Join(uint32 Index)
+{
+    if (!SessionInterface.IsValid()) return;
+    if (!SessionSearch.IsValid()) return;
+
     if (Menu != nullptr)
     {
-        UE_LOG(LogTemp, Warning, TEXT("teardown is executing"));
         Menu->Teardown();
     }
+    SessionInterface->JoinSession(0, SESSION_NAME, SessionSearch->SearchResults[Index]);
+}
+void UServerClientGameInstance::OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result)
+{
+    if (!SessionInterface.IsValid()) return;
+
+    FString Address;
+    if (!SessionInterface->GetResolvedConnectString(SESSION_NAME, Address))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("could not resolve connection string"));
+
+        return;
+    }
+
     UEngine* Engine = GetEngine();
     if (!ensure(Engine != nullptr)) return;
 
@@ -172,3 +207,5 @@ void UServerClientGameInstance::LoadMainMenu()
     if(!ensure(PlayerController != nullptr)) return;
     PlayerController->ClientTravel("/Game/MyContents/MenuSystem/Level/MenuLevel", ETravelType::TRAVEL_Absolute);
 }
+
+

@@ -14,11 +14,21 @@ class SERVERCLIENTPRACTICE_API UMainMenu : public UMenuWidget
 {
 	GENERATED_BODY()
 
+public:
+
+	UMainMenu(const FObjectInitializer& ObjectInitializer);
+
+	void SetServerList(TArray <FString> ServerNames);
+
+	void SelectIndex(uint32 Index);
+
 protected:
 
 	virtual bool Initialize() override;
 
 private:
+
+	TSubclassOf<class UUserWidget> ServerRowClass;
 
 	UPROPERTY(meta = (BindWidget))
 	class UButton* HostButton;
@@ -45,7 +55,7 @@ private:
 	class UButton* ConfirmJoinMenuButton;
 
 	UPROPERTY(meta = (BindWidget))
-	class UEditableTextBox* IpAddressField;
+	class UPanelWidget* ServerList;
 
 	UFUNCTION()
 	void HostServer();
@@ -61,5 +71,7 @@ private:
 
 	UFUNCTION()
 	void ExitPressed();
+
+	TOptional<uint32> SelectedIndex;
 
 };

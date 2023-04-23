@@ -6,6 +6,8 @@
 #include "Engine/GameInstance.h"
 #include "MenuInterface.h"
 #include "OnlineSubsystem.h"
+#include "OnlineSessionSettings.h"
+#include "Interfaces/OnlineSessionInterface.h"
 #include "ServerClientGameInstance.generated.h"
 
 /**
@@ -26,7 +28,7 @@ public:
 	void Host() override;
 
 	UFUNCTION(Exec)
-	void Join(FString& Address) override;
+	void Join(uint32 Index) override;
 
 	UFUNCTION(BlueprintCallable)
 	void LoadMenu();
@@ -35,6 +37,8 @@ public:
 	void InGameLoadMenu();
 
 	void LoadMainMenu() override;
+
+	void RefreshServerList() override;
 
 private:
 
@@ -53,6 +57,8 @@ private:
 	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
 
 	void OnFindSessionComplete(bool bWasSuccessful);
+
+	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 
 	TSharedPtr<class FOnlineSessionSearch> SessionSearch;
 

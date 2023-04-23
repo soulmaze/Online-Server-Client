@@ -2,9 +2,20 @@
 
 
 #include "MainMenu.h"
+#include "UObject/ConstructorHelpers.h"
 #include "Components/Button.h"
 #include "Components/WidgetSwitcher.h"
 #include "Components/EditableTextBox.h"
+#include "Components/TextBlock.h"
+#include "ServerRow.h"
+
+UMainMenu::UMainMenu(const FObjectInitializer& ObjectInitializer)
+{
+    static ConstructorHelpers::FClassFinder<UUserWidget> ServerRowBPClass(TEXT("/Game/MyContents/MenuSystem/Blueprints/WBP_ServerRow"));
+    if (!ensure(ServerRowBPClass.Class != nullptr)) return;
+    ServerRowClass = ServerRowBPClass.Class;
+}
+
 
 bool UMainMenu::Initialize()
 {
@@ -40,13 +51,44 @@ void UMainMenu::HostServer()
     
 }
 
+void UMainMenu::SetServerList(TArray<FString> ServerNames)
+{
+    UWorld* World = this->GetWorld();
+    if (!ensure(World != nullptr)) return;
+
+    ServerList->ClearChildren();
+
+    uint32 i = 0;
+
+    for (const FString& ServerName : ServerNames)
+    {
+        UServerRow* Row = CreateWidget<UServerRow>(World, ServerRowClass);
+        if (!ensure(Row != nullptr)) return;
+
+        Row->ServerName->SetText(FText::FromString(ServerName));
+        Row->Setup(this, i);
+        i++;
+
+        ServerList->AddChild(Row);
+    }
+}
+
+void UMainMenu::SelectIndex(uint32 Index)
+{
+    SelectedIndex = Index;
+}
+
 void UMainMenu::JoinServer()
 {
-    if(MenuInterface != nullptr)
+    if (SelectedIndex.IsSet() && MenuInterface != nullptr)
     {
-        if(!ensure(IpAddressField != nullptr)) return;
-        FString Address = IpAddressField->GetText().ToString();
-        MenuInterface->Join(Address);
+        UE_LOG(LogTemp, Warning, TEXT("selected indesx is %d"), SelectedIndex.GetValue());
+
+        MenuInterface->Join(SelectedIndex.GetValue());
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("selected indesx is not set"));
     }
 }
 
@@ -56,6 +98,10 @@ void UMainMenu::OpenJoinMenu()
     if(!ensure(JoinMenu != nullptr)) return;
 
     MenuSwitcher->SetActiveWidget(JoinMenu);
+    if (MenuInterface != nullptr)
+    {
+        MenuInterface->RefreshServerList();
+    }
 }
 
 void UMainMenu::OpenMainMenu()
